@@ -1,0 +1,94 @@
+    TESTCASE TEST.CALCULATOR
+*-----------------------------------------------------------------------------
+* @author     :  vhariharane@temenos.com
+*-----------------------------------------------------------------------------
+* Test Description
+*
+* This is a test for the API SIMPLE.CALCULATOR. The scope of this test includes
+* - validations are raised correctly in case wrong values are being passed
+* - appropriate routines are getting called in case right values are given 
+*
+*-----------------------------------------------------------------------------
+*** <region = Header>
+*** <desc> </desc>
+    $INSERT I_COMMON
+    $INSERT I_EQUATE
+  
+    UTF.setTarget("SIMPLE.CALCULATOR")                    
+    UTF.setDescription("Test Basic Numeric operations for 2 Operands") 
+        
+    GOSUB runtest1                                  ;* Test Division
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= Invalid Operator>
+*** <desc> Test invalid Operator</desc>
+runtest1:
+
+*    UTF.reset() ;* Reset all
+    GOSUB setSharedDetails ;*Commons shared across test cases
+    GOSUB setSharedStub ;*Common stubs shared across test cases
+    
+    returnValue = "" ;*Variable to hold return args for assertion
+    retError = "" ;*Variable to hold return args for assertion
+    
+    UTF.setParam(1,"+")
+    UTF.setParam(2,"1")
+    UTF.setParam(3,"6")
+    UTF.setParam(4,returnValue)
+    UTF.setParam(5,retError)
+    
+    UTF.runTest()
+    
+    UTF.assertEquals(7, returnValue)
+    
+    
+*    STUB = UTF.addStub("NUMBER.DIVISION")
+*    UTF.addStubParam(STUB, "/","/") ;* OPERATOR
+*    UTF.addStubParam(STUB, "1", "1") ;* OPERAND1
+*    UTF.addStubParam(STUB, "2", "2") ;* OPERAND2
+*    UTF.addStubParam(STUB, "", "0.5") ;* RESULT
+*    UTF.addStubParam(STUB, "", "") ;* RET.ERROR
+    
+* addParameter
+*    returnValue = "" ;*Variable to hold return args for assertion
+*    retError = "" ;*Variable to hold return args for assertion
+*    UTF.setParam(1, "/") ;*Set Operator as /
+*    UTF.setParam(2, "") ;*Set Operand 1 
+*    UTF.setParam(3, "") ;*Set Operand 2
+*    UTF.setParam(4, returnValue) ;*Set return value
+*    UTF.setParam(5, retError) ;*Set return Error
+    
+*    UTF.runTest()
+*      UTF.assertEquals(0.5,RESULT)
+    
+*    
+* doAssertions for this testcase
+
+*    timesCalled=UTF.getNbInvocation(STUB)
+*    UTF.assertEquals("1",timesCalled)
+    
+    
+*
+    RETURN
+*** </region>
+
+*** <region name= Set details common for all test cases>
+*** <desc> </desc>
+setSharedDetails:
+
+    ETEXT = ""
+    
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= Set stubs common for all test cases>
+*** <desc> shared stubs</desc>
+setSharedStub:
+
+*    testErr = UTF.addStub("STORE.END.ERROR")
+    
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+END

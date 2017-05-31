@@ -1,0 +1,152 @@
+component FT.WKSHP
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+private method DebitDateInit
+(
+   
+)
+{
+    jBC: DB.DATE.INIT
+}
+
+private method CreditDateValidate
+(
+   
+)
+{
+    jBC: CR.DATE.VALIDATE
+}
+
+private method CreditDateInput
+(
+   
+)
+{
+    jBC: CR.DATE.INPT
+}
+
+private table FtDetails
+{
+        t24: FT.DETAILS
+        fields: {
+            
+        }
+}
+
+private method FtDetails
+(
+    
+)
+{
+    jBC: FT.DETAILS
+}
+
+private method FtDetailsFields
+(
+    
+)
+{
+    jBC: FT.DETAILS.FIELDS
+}
+
+private method FtAuthRoutine
+(
+    
+)
+{
+    jBC: FT.AUTH.RTN
+}
+
+private method IdCheck
+(
+    
+)
+{
+    jBC: ID.CHECK
+}
+
+private method EnqFtDetails
+(
+    INOUT ENQ.DATA string
+)
+{
+    jBC: ENQ.FTDETAILS
+}
+
+private method AcLoad
+(
+    
+)
+{
+    jBC: AC1.LOAD
+}
+
+private method AcSelect
+(
+    
+)
+{
+    jBC: AC1.SELECT
+}
+
+private method Das
+(
+          
+          INOUT TheList  string,
+          INOUT TheArgs  string,
+          INOUT TableSuffix  string
+)
+{
+    jBC: DAS.AC.SAVINGS
+}
+
+private method Ac
+(
+    IN ID string
+)
+{
+    jBC: AC1
+}
+
+private method Test
+(
+    IN ID string
+)
+{
+    jBC: TESTING.CDD
+}
+
+private method OfsMsg
+(
+    
+)
+{
+    jBC: OFS.MSG
+}
+
+private method OfsLocal
+(
+    
+)
+{
+    jBC: OFS.LOCAL
+}
+
+private method OfsRoutine
+(
+    IN PARAM.IN string,
+    OUT PARAM.OUT string
+)
+{
+    jBC: OFS.ROUTINE
+}
+
+private method ErrSrc
+(
+    
+)
+{
+    jBC: ERR.SRC
+}

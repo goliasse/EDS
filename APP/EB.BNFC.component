@@ -1,0 +1,70 @@
+component EB.BNFC
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+private table Beneficiary
+{
+        t24: EB.BENEFICIARY
+        fields: {
+            Account(ACCOUNT) = 1            
+            Nickname(NAME) = 2
+            Email(EMAIL) = 3
+            Ifsc(IFSC) = 4
+        }
+}
+private method Beneficiary
+(
+    
+)
+{
+    jBC: EB.BENEFICIARY
+}
+
+private method BeneficiaryFields
+(
+    
+)
+{
+    jBC: EB.BENEFICIARY.FIELDS
+}
+
+private method BeneficiaryValidate
+(
+    
+)
+{
+    jBC: BNFC.VALIDATE
+}
+
+private method AcTransValidate
+(
+    
+)
+{
+    jBC: AC.TRANS.VALIDATE
+}
+
+private method AcTransValidate1
+(
+    
+)
+{
+    jBC: AC.TRANS.VALIDATE1
+}
+
+private method IfscValidate
+(
+    
+)
+{
+    jBC: IFSC.VALIDATE
+}
+
+private method BenObnkValidate
+(
+    
+)
+{
+    jBC: BEN.OBNK.VALIDATE
+}

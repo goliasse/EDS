@@ -1,0 +1,137 @@
+component EB.DebitCard
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+module table DebitCard
+{
+        t24: EB.DEBIT.CARD
+        fields: {
+            ShortDescription(EB.DB.SHORT.DESCRIPTION)=1
+            Account(EB.DB.ACCOUNT) = 2
+            Customer(EB.DB.CUSTOMER) = 3
+            NoOfCards(EB.DB.NO.OF.CARDS) = 4
+            DisplayName(EB.DB.DISPLAY.NAME) = 5
+            CardNo(EB.DB.CARD.NO) = 6
+            StartDate(EB.DB.START.DATE) = 7
+            EndDate(EB.DB.END.DATE) = 8
+            Status(EB.DB.STATUS) = 9
+            Reserved.2(EB.DB.RESERVED.2) = 10
+            Reserved.1(EB.DB.RESERVED.1) = 11
+            LocalRef(EB.DB.LOCAL.REF) = 12
+            Override(EB.DB.OVERRIDE) = 13
+            RecordStatus(EB.DB.RECORD.STATUS) = 14
+            CurrNo(EB.DB.CURR.NO) = 15
+            Inputter(EB.DB.INPUTTER) = 16
+            DateTime(EB.DB.DATE.TIME) = 17
+            Authoriser(EB.DB.AUTHORISER) = 18
+            CoCode(EB.DB.CO.CODE) = 19
+            AuditorCode(EB.DB.AUDITOR.CODE) = 20
+            AuditDateTime(EB.DB.AUDIT.DATE.TIME) = 21
+        }
+}
+module table CustomerCard
+{
+        t24: EB.CUSTOMER.CARD
+        fields: {
+            DebitCardId(DEBIT.CARD.ID) = 1
+        }
+}
+
+public method CardService 
+(
+    IN ID string 
+)
+{
+    jBC: CARD.SERVICE
+}
+
+public method CardServiceSelect
+(
+
+)
+{
+    jBC: CARD.SERVICE.SELECT
+}
+public method DebitCard 
+(
+    
+)
+{
+    jBC: EB.DEBIT.CARD
+}
+
+public method DebitCardFields 
+(
+    
+)
+{
+    jBC: EB.DEBIT.CARD.FIELDS
+}
+public method DebitCardRecord
+(
+    
+)
+{
+    jBC: EB.DEBIT.CARD.RECORD
+}
+public method DebitCardValidate
+(
+    
+)
+{
+    jBC: EB.DEBIT.CARD.VALIDATE
+}
+public method DebitCardOverrides
+(
+    
+)
+{
+    jBC: EB.DEBIT.CARD.OVERRIDES
+}
+public method DebitCardProcess
+(
+    
+)
+{
+    jBC: EB.DEBIT.CARD.PROCESS
+}
+public method DebitCardAuthorise
+(
+    
+)
+{
+    jBC: EB.DEBIT.CARD.AUTHORISE
+}
+public method DebitCardFunction
+(
+    
+)
+{
+    jBC: EB.DEBIT.CARD.FUNCTION
+}
+
+public method CustomerCard
+(
+    
+)
+{
+    jBC: EB.CUSTOMER.CARD
+}
+public method CustomerCardFields
+(
+    
+)
+{
+    jBC: EB.CUSTOMER.CARD.FIELDS
+}
+
+public method DASDebitCard 
+(
+    INOUT TheList string,
+    IN TheArgs string ,
+    IN TableSuffix string
+)
+{
+    jBC: DAS.EB.DEBIT.CARD
+}

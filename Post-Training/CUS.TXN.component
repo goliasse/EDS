@@ -1,0 +1,67 @@
+component CUS.TXN
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+private table CusTxn
+{
+        t24: AC.CUS.TXN
+        fields: {            
+            TxnId(TXN.ID) = 1
+        }
+}
+private method CusTxn
+(
+    
+)
+{
+    jBC: AC.CUS.TXN
+}
+
+private method CusTxnFields
+(
+    
+)
+{
+    jBC: AC.CUS.TXN.FIELDS
+}
+
+private method TxnLoad
+(
+)
+{
+    jBC: TXN2.LOAD
+}
+
+private method TxnSelect
+(
+)
+{
+    jBC: TXN2.SELECT
+}
+
+private method Txn
+(
+    IN ID string
+)
+{
+    jBC: TXN2
+}
+
+private method MergeTxn
+(
+)
+{
+    jBC: MERGETXN
+}
+
+private method Das
+(
+          
+          INOUT TheList  string,
+          INOUT TheArgs  string,
+          INOUT TableSuffix  string
+)
+{
+    jBC: DAS.AC.CUS.TXN
+}

@@ -1,0 +1,56 @@
+TESTCASE AC.DEBIT.CARD.VALIDATE.TEST
+*-----------------------------------------------------------------------------
+$INSERT I_COMMON
+    $INSERT I_F.ACCOUNT
+    $INSERT I_F.AC.DEBIT.CARD
+
+*Test to check if error is raised when START.DATE iS GT END.DATE
+
+    UTF.setTarget("AC.DEBIT.CARD.VALIDATE")                    
+    UTF.setDescription("Validation checks for the DEBIT.CARD  ") ;* 
+    GOSUB runtest1                                  ;* Error should be raised when start date GT end date
+    
+    RETURN
+runtest1:
+* set data for this test  
+* setting the DISPLAY.NAME and NO.OF.CARDS so that this error is not raised
+*  
+    nameList<1>="John"
+    nameList<1,2>= "kIM"
+    R.NEW(XX.YY.DISPLAY.NAME)=nameList ;* setting display names
+    R.NEW(XX.YY.NO.OF.CARDS)=2 ;* setting number of cards as 2 based on nameList
+  *setting START.DATE GT END.DATE so that error is raised
+    R.NEW(XX.YY.START.DATE)='20170101'
+    R.NEW(XX.YY.END.DATE)='20100101' ;* start.date is GT end.date and error should be raised
+ *PROCESS.MESSAGE paragraph of DEBIT.CARD.VALIDATE requires MESSAGE and V$FUNCTION
+    MESSAGE = ''
+    V$FUNCTION = 'I'
+ * setting the account ID and account record for the paragraph POPULATE.CUSTOMER
+    ACCOUNT.ID="123456"
+    R.NEW(XX.YY.ACCOUNT)=ACCOUNT.ID
+* 
+    R.ACCOUNT<AC.CUSTOMER>="100100"
+    R.ACCOUNT<AC.CATEGORY>="1001"
+    UTF.setRecord("F.ACCOUNT",ACCOUNT.ID,R.ACCOUNT)  
+* set stubs for this test   
+* as START.DATE is GT END.DATE, the .VALIDATE method will call STORE.END.ERROR
+    STUB = UTF.addStub("STORE.END.ERROR")
+
+ * OPF is called by the paragraph POPULATE.CUSTOMER 
+    STUBOPF = UTF.addStub("OPF")
+    UTF.addStubParam(STUBOPF,UTF.any(),UTF.any())
+    UTF.addStubParam(STUBOPF,UTF.any(),UTF.any())
+    
+* Note - STUB is not needed for I/O Operations . Hence no need to STUB FREAD    
+     UTF.runTest()   
+* doAssertions for this testcase  
+   ErrMessage= ETEXT
+   UTF.assertContains(ErrMessage,"AC-END.DATE")
+
+    RETURN
+*** </region>
+*-----------------------------------------------------------------------------
+*** <region name= testcase2>
+*** <desc> description of testcase2</desc>
+
+END

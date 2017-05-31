@@ -1,0 +1,60 @@
+component EB.TRANS
+# Component Isolation Definition
+metamodelVersion 1.6
+# -------------------------------------------------
+
+private method Enqwkshp
+(
+   INOUT ENQ.DATA string
+)
+{
+    jBC: ENQWRKSHOP
+}
+
+private method AccDetails
+(
+   INOUT ENQ.DATA string
+)
+{
+    jBC: ACC.DETAILS
+}
+
+private method Conv
+(
+   
+)
+{
+    jBC: CONV
+}
+
+private method AmountConv
+(
+   
+)
+{
+    jBC: AMOUNTCONV
+}
+
+private method NoFile
+(
+   OUT DETAILS string
+)
+{
+    jBC: WKSHP.NOFILE
+}
+
+module property readwrite UpdatedBalance : string{
+    jBC: I_WORKINGBALANCE -> UPDATED.BALANCE
+}
+
+private method StmtId
+(
+   IN ID string,
+   OUT AVAIL.ID string,
+   IN FROM.DATE string,
+   IN TO.DATE string
+)
+{
+    jBC: STMT.ID
+}
+

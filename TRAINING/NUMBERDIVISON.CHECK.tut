@@ -1,0 +1,136 @@
+TESTCASE NUMBERDIVISON.CHECK
+
+   
+**** <region = "Header" >
+*Header to describe the TestCase
+    RoutineName = "XXXXX" ;*Indicates the routine that is tested
+    Description = "Description of the scenario being tested" ;*Short description on the scenario tested  
+
+    UTF.setTarget("NUMBER.DIVISON")
+    UTF.setDescription("DIVISON OF TWO NUMBERS")
+**** </region>
+
+    GOSUB setParams ;* To set the parameters required for the method
+    GOSUB setBaseDetails ;* Set the cache content and any commons that need to be set before invoking the method
+    GOSUB defineStubs ;* Define the stubs for the called methods inside the target routine
+    GOSUB executeTest ;* All set. Now execute the method
+    GOSUB getTestResults ;* Get the write/delete content executed as part of the test
+    GOSUB defineAssertions ;* Set assertions for parameters and check for updates to files here
+
+    RETURN
+
+*** <region name= Set parameters for target method>
+*** <desc> </desc>
+
+setParams:
+
+
+  returnValue = "" ;*Variable to hold return args for assertion
+    retError = "" ;*Variable to hold return args for assertion
+    
+    UTF.setParam(1,"/")
+    UTF.setParam(2,"1")
+    UTF.setParam(3,"2")
+    UTF.setParam(4,returnValue)
+    UTF.setParam(5,retError)
+    
+    UTF.runTest()
+    
+ UTF.assertEquals(0.5, returnValue)
+* Sample code
+
+* Set Input Params
+
+*Input Arguments
+*    Param1 = "20100128" ;*StartDate
+*    UTF.addParam(Param1)
+*    Param2 = "20100204" ;*EndDate
+*    UTF.addParam(Param2)
+*    Param3 = 5 ;*Rate Details
+*    UTF.addParam(Param3)
+
+*Return Arguments
+
+*    Param4 = "" ;*Rounded Amount
+*    UTF.addParam(Param4)
+
+    RETURN
+*** </region>
+
+
+*** <region name= Set the base records and commons>
+*** <desc> </desc>
+
+setBaseDetails:
+
+* Sample code
+*
+* Setup initial context here:
+* COM/MY.COMMON/C1,C2,...
+* UTF.setRecord("F.MY.TABLE", "MY.KEY.1", 'Field1' : @FM : "Field2")
+* CachePut("MY.BUCKET", "KEY1", "Initial value")
+*
+    RETURN
+
+*** </region>
+
+*** <region name= Define the stubs for methods inside target>
+*** <desc> </desc>
+
+defineStubs:
+*
+* Define the stubs here
+* STUB = UTF.addStub("MY.STUBED CALL")
+* UTF.addStubParam(STUB, "20150903", "September 3rd 2015")
+* UTF.addStubParam(STUB, UTF.matches("2N"), UTF.same())
+
+
+    RETURN
+*** </region>
+
+
+*** <region name= Execute the test>
+*** <desc> </desc>
+
+executeTest:
+
+*    UTF.runTest()
+
+    RETURN
+*** </region>
+
+
+getTestResults:
+
+* Get the content of records written or deleted as part of this test case
+* RESULT.REC = UTF.getRecord("F.RESULT.FILE", RESULT.ID) 
+
+RETURN
+
+
+*** <region name= Define assertions>
+*** <desc> </desc>
+
+defineAssertions:
+*
+*-------------------------------------------------
+* Define return param Assertions here
+* UTF.assertEquals(P1, "September 3rd 2015")
+* UTF.assertContains(P1, "September")
+*
+*-------------------------------------------------
+*
+* Define COMMON variable assertions here
+*
+*-------------------------------------------------
+*
+* Define file update assertions here
+*
+*-------------------------------------------------
+
+
+    RETURN
+
+*** </region>
+
+    END

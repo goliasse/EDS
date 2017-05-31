@@ -1,0 +1,4 @@
+COMMON/DAS.AC.DEBIT.CARD/DAS$CACHE(100),DAS$NOTES(100)
+DAS$NOTES(DAS.AC.DEBIT.CARD$CUSTOMER.CARD)= 'List of cards per customer'
+DAS$NOTES(DAS.AC.DEBIT.CARD$CARD.VALIDITY)= 'Cards expiring before a date'
+DSA$NOTES(DAS.AC.DEBIT.CARD$CARD.LIST)= 'Lists of cards with no condition'
