@@ -68,3 +68,12 @@ private method BenObnkValidate
 {
     jBC: BEN.OBNK.VALIDATE
 }
+
+private method CreditCurrency
+(
+    
+)
+{
+    jBC: CR.CURR
+}
+

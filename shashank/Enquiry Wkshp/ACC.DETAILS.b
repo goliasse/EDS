@@ -1,5 +1,5 @@
-* @ValidationCode : MjotOTc4MTkxNjMwOkNwMTI1MjoxNDk1MTgyNzk0NzM3OmhzaGFzaGFuazotMTotMTowOjA6ZmFsc2U6Ti9BOkRFVl8yMDE3MDEuMDotMTotMQ==
-* @ValidationInfo : Timestamp         : 19 May 2017 14:03:14
+* @ValidationCode : MjotOTc4MTkxNjMwOkNwMTI1MjoxNDk2MjkxNjg3NTI1OmhzaGFzaGFuazotMTotMTowOjA6ZmFsc2U6Ti9BOkRFVl8yMDE3MDQuMDotMTotMQ==
+* @ValidationInfo : Timestamp         : 01 Jun 2017 10:04:47
 * @ValidationInfo : Encoding          : Cp1252
 * @ValidationInfo : User Name         : hshashank
 * @ValidationInfo : Nb tests success  : N/A
@@ -8,11 +8,12 @@
 * @ValidationInfo : Coverage          : N/A
 * @ValidationInfo : Strict flag       : N/A
 * @ValidationInfo : Bypass GateKeeper : false
-* @ValidationInfo : Compiler Version  : DEV_201701.0
-    $PACKAGE EB.TRANS     ;* COMPONENT INCLUDED
+* @ValidationInfo : Compiler Version  : DEV_201704.0
+
+$PACKAGE EB.TRANS     ;* COMPONENT INCLUDED
     
 * BUILD ROUTINE FOR ACC.STMT ENQUIRY
-    SUBROUTINE ACC.DETAILS(ENQ.DATA)
+SUBROUTINE ACC.DETAILS(ENQ.DATA)
 *-----------------------------------------------------------------------------
 *
 *-----------------------------------------------------------------------------
@@ -28,7 +29,7 @@
     GOSUB ENQ.DISPLAY           ;* FETCHED TRANSACTIONS BEING PASSED TO THE ENQUIRY
 
 FINISH:
-    RETURN
+RETURN
 
 INIT:
 
@@ -41,7 +42,7 @@ INIT:
     IF(R.ACC EQ '') THEN
         EB.Reports.setEnqError("Invalid Account")
         
-        GOSUB FINISH    
+        GOSUB FINISH
     END
     
     MONTH.STMT.COUNT=0
@@ -59,7 +60,7 @@ INIT:
     
     MONTH.STMT.COUNT=DCOUNT(STMT.ARR,@FM)       ;* count STORES THE NO OF RECORS FETCHED FROM THE AcctStmtPrint APPLICATION
     CRT MONTH.STMT.COUNT
-    RETURN
+RETURN
 
 
 
@@ -82,24 +83,24 @@ PROCESS:
         MONTH.STMT.COUNT--
         
         IF MONTH.STMT.COUNT LE 0 THEN
-        FLAG=0
+            FLAG=0
         END
 
     REPEAT
     
-    RETURN
+RETURN
 
 ENQ.DISPLAY:
 
     CHANGE @FM TO ' ' IN STMT.ENTRY.ID
         
-        CRT STMT.ENTRY.ID
-        ENQ.DATA<2,1>="@ID"
-        ENQ.DATA<3,1>="EQ"
-        ENQ.DATA<4,1>=STMT.ENTRY.ID
+    CRT STMT.ENTRY.ID
+    ENQ.DATA<2,1>="@ID"
+    ENQ.DATA<3,1>="EQ"
+    ENQ.DATA<4,1>=STMT.ENTRY.ID
         
-    RETURN
+RETURN
 
 
 *-----------------------------------------------------------------------------
-    CRT "END"
+CRT "END"
