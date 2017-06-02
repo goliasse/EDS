@@ -47,6 +47,13 @@ private method Txn
 {
     jBC: TXN2
 }
+private method Txn1
+(
+
+)
+{
+    jBC: TXN1
+}
 
 private method MergeTxn
 (
