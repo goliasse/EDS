@@ -1,5 +1,4 @@
-* I_F.SS.CUSTRANS Created 0 at 12:00AM by vkssourabh/INPUTTER
-*      PREFIX[XX.YY]
+
                        EQU XX.YY.CUS.ID TO 1,   SsCustrans_CusId TO 1,
                       XX.YY.ACCOUNTS.ID TO 2,   SsCustrans_AccountsId TO 2,
                     XX.YY.RECORD.STATUS TO 3,   SsCustrans_RecordStatus TO 3,
